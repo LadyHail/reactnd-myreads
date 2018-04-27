@@ -1,0 +1,24 @@
+Components:
+
+- Main:
+	has link to Search component;
+	keep state of books;
+	-- Methods: updateShelf, getShelfBooks;
+	-- State: books
+
+- Book:
+	has the same state on main and search page;
+	-- Props: book, onBookMove
+
+- Shelf:
+	contains Book component;
+	-- Props: books, name, onBookMove
+
+- Search: 
+	find book in database; 
+	add book to library; 
+	contains Book component;
+	has link to Main page;
+	use route;
+	has input field;
+	dynamic searching;
