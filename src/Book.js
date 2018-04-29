@@ -12,8 +12,8 @@ class Book extends React.Component {
     }
 
     render() {
-        const img = this.props.book.imageLinks.smallThumbnail;
-        const authorsArray = this.props.book.authors;
+        const img = this.props.book.imageLinks ? this.props.book.imageLinks.smallThumbnail : null;
+        const authorsArray = this.props.book.authors ? this.props.book.authors : [];
         const title = this.props.book.title;
         const coverStyle = {
             width: 128,
@@ -27,8 +27,8 @@ class Book extends React.Component {
                     <div className="book-top">
                         <div className="book-cover" style={coverStyle}></div>
                         <div className="book-shelf-changer">
-                            <select value={this.props.book.shelf} onChange={(e) => this.updateBookShelf(e.target.value)}>
-                                <option value="none" disabled>Move to...</option>
+                            <select value={this.props.book.shelf ? this.props.book.shelf : 'none'} onChange={(e) => this.updateBookShelf(e.target.value)}>
+                                <option value="#" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>
@@ -37,7 +37,7 @@ class Book extends React.Component {
                         </div>
                     </div>
                     <div className="book-title">{title}</div>
-                    {authorsArray.map((author) =>
+                    {authorsArray.map(author =>
                         <div className="book-authors" key={author}>{author}</div>
                         )}
                 </div>
